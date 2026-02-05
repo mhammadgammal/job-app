@@ -61,11 +61,14 @@ class JobVacancyController extends Controller
         $resumeFile = $request->file('resume_file');
         $resumeExtension = $resumeFile->getClientOriginalExtension();
         $resumeOriginalName = $resumeFile->getClientOriginalName();
-        $resumePath = 'resume_' . time() . '.' . $resumeExtension;
+        $resumePath = 'resume_'.time().'.'.$resumeExtension;
 
-        $path = $resumeFile->storeAs('resumes', $resumePath, 'cloud');
+        $path = $resumeFile->storeAs('resumes', $resumePath, [
+            'disk' => 'cloud',
+            'visibility' => 'public',
+        ]);
 
-        $fileUrl = config('filesystems.disks.cloud.url') . '/' . $path;
+        $fileUrl = config('filesystems.disks.cloud.url').'/'.$path;
         $resumeData = ResumeAnalysisService::getResumeInformation($fileUrl, 'resumes');
         $resume = Resume::create([
             'filename' => $resumeOriginalName,
