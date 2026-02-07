@@ -37,11 +37,11 @@
             </div>
             <div class="grid grid-flow-col gap-4 mt-6">
                 <div class="col-span-2">
-                    <h2 class="text=lg font-bold text-white"> {{ _('Job Description') }}</h2>
+                    <h2 class="text=lg font-bold text-white">Job Description</h2>
                     <p class="text-gray-400">{{ $jobVacancy->description }}</p>
                 </div>
                 <div class=" col-span-1">
-                    <h2 class="text=lg font-bold text-white"> {{ _('Job Overview') }}</h2>
+                    <h2 class="text=lg font-bold text-white">Job Overview</h2>
                     <div class="bg-gray-900 rounded-lg p-6 space-y-4 MT-4">
                         {{-- published At --}}
                         <div class="flex flex-col">
@@ -50,7 +50,7 @@
                         </div>
                         {{-- Company --}}
                         <div class="flex flex-col">
-                            <p class="text-gray-500"> company </p>
+                            <p class="text-gray-500"> Company </p>
                             <p class="text-white"> {{ $jobVacancy->company->name }} </p>
                         </div>
 
