@@ -1,0 +1,36 @@
+name: shaghal-backoffice
+region: nyc # or your preferred region
+services:
+  - name: web
+    dockerfile_path: Dockerfile # Points to your root Dockerfile
+    github:
+      repo: mhammadgammal/job-backoffice
+      branch: master
+      deploy_on_push: true
+    http_port: 80 # Match this to your Docker EXPOSE port
+    instance_count: 1
+    instance_size_slug: basic-xxs
+    envs:
+      - key: APP_ENV
+        scope: RUN_TIME
+        value: production
+# Optional: Add a managed database
+# databases:
+#   - name: db
+#     engine: MYSQL
+#     version: "8"
+#     production: false
+#     cluster_name: laravel-db-cluster
+# Optional: Add Redis for caching/sessions
+# databases:
+#   - name: redis
+#     engine: REDIS
+#     version: "7"
+#     production: false
+# Optional: Static site for serving assets (if not served by Laravel)
+# static_sites:
+#   - name: assets
+#     source_dir: public
+#     output_dir: /
+#     routes:
+#       - path: /assets
